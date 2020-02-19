@@ -2,7 +2,7 @@
 title: tfvar - A tool to help you write Terraform's variable definitions
 published: true
 description: I built tfvar to improve my Terraforming workflow, hope this will help you too
-tags: productivity, opensource, terraform, showdev
+tags: productivity, opensource, devops, showdev
 ---
 
 Whenever I want to start working on an existing [Terraform](https://www.terraform.io/) project or using a Terraform [module](https://www.terraform.io/docs/configuration/modules.html), the first thing that I find myself doing often is looking for the input variables.  If the project is small enough, the input variables are usually being declared in the `main.tf` file.  For a well organized Terraform configurations we can find a `variables.tf` file.  However, the locations or where to put the input variable declarations is just a convention and is not enforced syntactically.  It is our job as the user of the configurations/modules to track down all variables and make sure that they have the values [assigned properly](https://www.terraform.io/docs/configuration/variables.html#assigning-values-to-root-module-variables) before running `terraform plan` or `terraform apply`.  It is possible that some variables are hiding somewhere unexpectedly, or we just missed one during the assignment and only realize it when we encounter the following message during the `terraform plan` phase:
