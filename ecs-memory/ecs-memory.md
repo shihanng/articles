@@ -1,8 +1,8 @@
 ---
 title: Memory Reservation in Amazon Elastic Container Service
 published: false
-description: This article discussed...
 tags: AWS, Docker, container, ECS
+cover_image: https://raw.githubusercontent.com/shihanng/articles/ecs-memory/ecs-memory/images/cover.jpg
 ---
 
 Amazon Elastic Container Service (ECS) provides the means to developers to orchestrate Docker containers running in Amazon Web Services (AWS). Using ECS develops will be able to deploy and command a fleet of Docker containers, scale the services, etc. in a very flexible manner within the ECS cluster.
