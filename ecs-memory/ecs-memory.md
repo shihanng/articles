@@ -1,6 +1,6 @@
 ---
 title: Memory Reservation in Amazon Elastic Container Service
-published: false
+published: true
 tags: AWS, Docker, container, ECS
 cover_image: https://raw.githubusercontent.com/shihanng/articles/ecs-memory/ecs-memory/images/cover.jpg
 ---
