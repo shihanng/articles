@@ -1,7 +1,7 @@
 ---
 title: Memory Reservation in Amazon Elastic Container Service
 published: true
-tags: aws, docker, devops, learning, beginners
+tags: aws, docker, learning, beginners
 cover_image: https://raw.githubusercontent.com/shihanng/articles/ecs-memory/ecs-memory/images/cover.jpg
 ---
 
