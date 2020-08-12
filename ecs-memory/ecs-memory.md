@@ -97,6 +97,5 @@ So if not a minimal value, how should we set the `memoryReservation`? [AWS recom
 > ... if your container normally uses 128 MiB of memory, but occasionally bursts to 256 MiB of memory for short periods of time, you can set a memoryReservation of 128 MiB, and a memory hard limit of 300 MiB. This configuration would allow the container to only reserve 128 MiB of memory from the remaining resources on the container instance, but also allow the container to consume more memory resources when needed.
 
 In the real world, it is not always that straight forward to know how much memory our application needs in contrast to the example we have above. Service memory utilization can be a metric to help us figure out how much memory our container normally uses. When its average is close to or exceeds 100%, it shows that our application is using more than what we expected, and we should increase the reservation or the resource accordingly.
-occasionally
 
 Thanks for reading. I hope that you find this article useful ❤️.
