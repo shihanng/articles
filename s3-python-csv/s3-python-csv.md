@@ -59,8 +59,7 @@ So how do we bridge the gap between `botocore.response.StreamingBody` type and t
 
 > Most standard codecs are text encodings, which encode text to bytes
 
-Since we are doing the opposite, we are looking for a "decoder," specifically a decoder that can handle stream data:
-[`codecs.StreamReader`](https://docs.python.org/3/library/codecs.html#streamreader-objects)
+Since we are doing the opposite, we are looking for a "decoder," specifically a decoder that can handle stream data: [`codecs.StreamReader`](https://docs.python.org/3/library/codecs.html#streamreader-objects)
 
 > Decodes data from the stream and returns the resulting object.
 
