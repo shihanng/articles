@@ -1,0 +1,40 @@
+name: main
+on:
+  pull_request:
+    branches:
+      - "*"
+
+jobs:
+  submit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v2
+      # - name: Get changing markdown files
+      #   id: diff
+      #   run: |
+      #     git fetch --no-tags --prune --depth=1 origin +refs/heads/${{ github.base_ref }}:refs/remotes/origin/${{ github.base_ref }}
+      #     files=$(git diff --diff-filter=ACMR --name-only origin/${{ github.base_ref }} HEAD | grep '.*')
+      #     # https://github.community/t/set-output-truncates-multiline-strings/16852/2
+      #     files="${files//'%'/'%25'}"
+      #     files="${files//$'\n'/'%0A'}"
+      #     files="${files//$'\r'/'%0D'}"
+      #     echo "::set-output name=files::${files}"
+      - uses: technote-space/get-diff-action@v3
+        id: diff
+        with:
+          SUFFIX_FILTER: .md
+      - name: devto-act
+        uses: shihanng/devto-act@v0.0.2
+        with:
+          dry_run: true
+          auto_prefix: "yes"
+          markdown_files: ${{ steps.diff.outputs.diff }}
+      - name: Get outputs
+        run: |
+          echo ${{ steps.diff.outputs.diff }}
+          for f in ${{ steps.diff.outputs.diff }}
+          do
+            echo "${f}"
+          done
+          # while IFS= read -r line ; do echo this $line; done <<< "${{ steps.diff.outputs.files }}"
