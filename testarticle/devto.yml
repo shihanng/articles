@@ -1,6 +1,4 @@
 article_id: 448513
 cover_image: ""
 images:
-  "":
-    /images/a:
-      jpg: ""
+  ./images/a.jpg: ""
