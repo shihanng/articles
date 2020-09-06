@@ -24,6 +24,7 @@ jobs:
 
       - name: Submit to DEV as draft
         uses: shihanng/devto-act@v0.0.3
+        if: ${{ github.event_name == 'pull_request' }}
         with:
           auto_prefix: "yes"
           markdown_files: ${{ steps.trim.outputs.trimmed }}
@@ -32,6 +33,7 @@ jobs:
 
       - name: Commit changes
         uses: EndBug/add-and-commit@v4
+        if: ${{ github.event_name == 'pull_request' }}
         with:
           author_name: ${{ secrets.AUTHOR_NAME }}
           author_email: ${{ secrets.AUTHOR_EMAIL }}
