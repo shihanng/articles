@@ -27,6 +27,8 @@ jobs:
         with:
           auto_prefix: "yes"
           markdown_files: ${{ steps.trim.outputs.trimmed }}
+        env:
+          DEVTO_API_KEY: ${{ secrets.DEVTO_API_KEY }}
 
       - name: Commit changes
         uses: EndBug/add-and-commit@v4
