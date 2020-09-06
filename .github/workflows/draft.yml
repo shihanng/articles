@@ -14,9 +14,14 @@ jobs:
         id: diff
         with:
           SUFFIX_FILTER: .md
+      - name: Trim output from diff
+        id: trim
+        run: |
+          files="$(echo -n "${{ steps.diff.outputs.diff }}" | tr -d "'")"
+          echo "::set-output name=trimmed::$files"
       - name: Submit to DEV as draft
-        uses: shihanng/devto-act@v0.0.2
+        uses: shihanng/devto-act@v0.0.3
         with:
           dry_run: true
           auto_prefix: "yes"
-          markdown_files: ${{ steps.diff.outputs.diff }}
+          markdown_files: ${{ steps.trim.outputs.trimmed }}
