@@ -25,7 +25,6 @@ jobs:
       - name: Submit to DEV as draft
         uses: shihanng/devto-act@v0.0.3
         with:
-          dry_run: true
           auto_prefix: "yes"
           markdown_files: ${{ steps.trim.outputs.trimmed }}
 
