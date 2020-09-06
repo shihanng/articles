@@ -1,0 +1,22 @@
+name: draft
+on:
+  pull_request:
+    branches:
+      - "*"
+
+jobs:
+  submit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v2
+      - uses: technote-space/get-diff-action@v3
+        id: diff
+        with:
+          SUFFIX_FILTER: .md
+      - name: Submit to DEV as draft
+        uses: shihanng/devto-act@v0.0.2
+        with:
+          dry_run: true
+          auto_prefix: "yes"
+          markdown_files: ${{ steps.diff.outputs.diff }}
