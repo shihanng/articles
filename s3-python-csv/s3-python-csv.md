@@ -1,6 +1,5 @@
 ---
 title: How to read CSV file from Amazon S3 in Python
-published: true
 tags: python, codenewbie, beginners, aws
 description: A detailed post about how to read CSV file from Amazon S3 with #python.
 ---
