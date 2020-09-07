@@ -1,4 +1,5 @@
 article_id: 423392
 images:
-  "./images/results.png": "https://raw.githubusercontent.com/shihanng/articles/ecs-memory/ecs-memory/images/results.png"
-  "./images/ecs-console.png": "https://raw.githubusercontent.com/shihanng/articles/ecs-memory/ecs-memory/images/ecs-console.png"
+  ./images/cover.jpg: ""
+  ./images/ecs-console.png: ""
+  ./images/results.png: ""
