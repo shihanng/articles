@@ -23,7 +23,7 @@ jobs:
           echo "::set-output name=trimmed::$files"
 
       - name: Submit to DEV as draft
-        uses: shihanng/devto-act@v0.0.3
+        uses: shihanng/devto-act@v0.0.4
         if: ${{ github.event_name == 'pull_request' }}
         with:
           auto_prefix: "yes"
