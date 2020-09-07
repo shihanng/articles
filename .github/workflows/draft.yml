@@ -1,5 +1,9 @@
 name: draft
 on:
+  push:
+    branches:
+      - "trunk"
+
   pull_request:
     branches:
       - "*"
@@ -24,14 +28,26 @@ jobs:
 
       - name: Submit to DEV as draft
         uses: shihanng/devto-act@v0.0.3
+        if: ${{ github.event_name == 'pull_request' }}
         with:
           auto_prefix: "yes"
           markdown_files: ${{ steps.trim.outputs.trimmed }}
         env:
           DEVTO_API_KEY: ${{ secrets.DEVTO_API_KEY }}
 
+      - name: Publish to DEV
+        uses: shihanng/devto-act@v0.0.3
+        if: ${{ github.event_name == 'push' }}
+        with:
+          auto_prefix: "yes"
+          markdown_files: ${{ steps.trim.outputs.trimmed }}
+          published: "yes"
+        env:
+          DEVTO_API_KEY: ${{ secrets.DEVTO_API_KEY }}
+
       - name: Commit changes
         uses: EndBug/add-and-commit@v4
+        if: ${{ github.event_name == 'pull_request' }}
         with:
           author_name: ${{ secrets.AUTHOR_NAME }}
           author_email: ${{ secrets.AUTHOR_EMAIL }}
