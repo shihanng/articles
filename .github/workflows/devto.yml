@@ -36,7 +36,7 @@ jobs:
           DEVTO_API_KEY: ${{ secrets.DEVTO_API_KEY }}
 
       - name: Publish to DEV
-        uses: shihanng/devto-act@v0.0.4
+        uses: shihanng/devto-act@v0.0.5
         if: ${{ github.event_name == 'push' }}
         with:
           auto_prefix: "yes"
