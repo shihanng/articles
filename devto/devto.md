@@ -52,3 +52,78 @@ will become
 ```
 
 on DEV. That means we are hosting the images on GitHub instead of DEV.
+
+# My Workflow
+
+Using the CLI tool and the GitHub Action above, I put together a workflow that suits my needs in [shihanng/articles](https://github.com/shihanng/articles):
+
+```yml
+name: DEV
+on:
+  push:
+    branches:
+      - "trunk"
+
+  pull_request:
+    branches:
+      - "*"
+
+jobs:
+  submit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v2
+
+      - name: Find Markdown files
+        uses: technote-space/get-diff-action@v3
+        id: diff
+        with:
+          SUFFIX_FILTER: .md
+
+      - name: Trim output from diff
+        id: trim
+        run: |
+          files="$(echo -n "${{ steps.diff.outputs.diff }}" | tr -d "'")"
+          echo "::set-output name=trimmed::$files"
+
+      - name: Submit to DEV as draft
+        uses: shihanng/devto-act@v0.0.6
+        if: ${{ github.event_name == 'pull_request' }}
+        with:
+          auto_prefix: "yes"
+          markdown_files: ${{ steps.trim.outputs.trimmed }}
+        env:
+          DEVTO_API_KEY: ${{ secrets.DEVTO_API_KEY }}
+
+      - name: Publish to DEV
+        uses: shihanng/devto-act@v0.0.6
+        if: ${{ github.event_name == 'push' }}
+        with:
+          auto_prefix: "yes"
+          markdown_files: ${{ steps.trim.outputs.trimmed }}
+          published: "yes"
+        env:
+          DEVTO_API_KEY: ${{ secrets.DEVTO_API_KEY }}
+
+      - name: Commit changes
+        uses: EndBug/add-and-commit@v4
+        if: ${{ github.event_name == 'pull_request' }}
+        with:
+          author_name: ${{ secrets.AUTHOR_NAME }}
+          author_email: ${{ secrets.AUTHOR_EMAIL }}
+          message: "Update devto.yml"
+          add: "**/devto.yml"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+```
+
+The workflow contains the following steps:
+
+1. First, we need to know which Markdown files that we need to publish because we don't want to republish everything on every pull request. We do this with the help of [technote-space/get-diff-action](https://github.com/technote-space/get-diff-action).
+2. Next, we have two independent steps that help us submit articles to DEV with `devto-act`. One submits the article as a draft if the GitHub event is a `pull request`. The other one publishes the article if the event is a `push` (which we limit to the main branch).
+3. Finally, we commit the changes in the `devto.yml` file to the same branch because we want to keep the `article_id` for future updates. This step is made possible with [EndBug/add-and-commit](https://github.com/EndBug/add-and-commit).
+
+### Submission Category:
+
+`Wacky Wildcards`
