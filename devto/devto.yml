@@ -1,7 +1,7 @@
 article_id: 454110
 images:
   ./images/dev_submission_flow.svg: ""
-  ./images/one.jpg: "./images/one.jpg"
-  ./images/two.jpg: "./images/two.jpg"
-  https://raw.githubusercontent.com/user/repo/new-article/./images/one.jpg: "https://raw.githubusercontent.com/user/repo/new-article/./images/one.jpg"
-  https://raw.githubusercontent.com/user/repo/new-article/./images/two.jpg: "https://raw.githubusercontent.com/user/repo/new-article/./images/two.jpg"
+  ./images/one.jpg: ./images/one.jpg
+  ./images/two.jpg: ./images/two.jpg
+  https://raw.githubusercontent.com/user/repo/new-article/./images/one.jpg: https://raw.githubusercontent.com/user/repo/new-article/./images/one.jpg
+  https://raw.githubusercontent.com/user/repo/new-article/./images/two.jpg: https://raw.githubusercontent.com/user/repo/new-article/./images/two.jpg
