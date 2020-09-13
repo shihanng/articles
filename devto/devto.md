@@ -106,7 +106,7 @@ jobs:
         env:
           DEVTO_API_KEY: ${{ secrets.DEVTO_API_KEY }}
 
-      - name: Commit changes
+      - name: Update devto.yml
         uses: EndBug/add-and-commit@v4
         if: ${{ github.event_name == 'pull_request' }}
         with:
@@ -127,3 +127,14 @@ The workflow contains the following steps:
 ### Submission Category:
 
 `Wacky Wildcards`
+
+# Ending
+
+I've been using `devto` and `devto-act` to publish my last few articles on DEV. Although it is still not perfect, I think it is time to share it with you. If you are like me, want to write DEV articles in your favorite and manage it on GitHub, please give these two tools a try:
+
+1. [`devto`](https://github.com/shihanng/devto): If you want to submit the article from your terminal
+2. [`devto-act`](https://github.com/shihanng/devto-act): If you want to automate the publishing workflow
+
+Feedbacks in any form (issues, PRs, comments below) are welcome. Please give these repositories a :star: if you find them useful. Those are always my main source of motivation!
+
+Thank you for reading :heart:.
