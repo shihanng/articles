@@ -38,3 +38,19 @@ Let's try the same on binary numbers:
 ![Multiplication on binary numbers.](./images/binary-mul.png)
 
 Again, in column 3, we have {% katex inline %}1+1+1+1=100_2{% endkatex %}. What we didn't see in the example of Decimal numbers above is: Here, we need to carry over the additional digits in {% katex inline %}100_2{% endkatex %} to the next and the following binary places: {% katex inline %}1{% endkatex %} to column 5 and {% katex inline %}0{% endkatex %} to column 4.
+
+## Bonus
+
+In Python, we can represent binary numbers by prefixing `0b` to the numbers. So, for the example above, we have:
+
+```console
+>>> 0b1111 * 0b111
+105
+```
+
+Use the `bin()` function to convert a Decimal to a binary representation:
+
+```console
+>>> bin(105)
+'0b1101001'
+```
